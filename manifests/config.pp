@@ -11,4 +11,11 @@ class msmtp::config inherits msmtp {
     # may contain plaintext passwords
     show_diff => false,
   }
+
+  if $aliases_file {
+    file { $aliases_file:
+      content => $aliases_content,
+      ensure  => $aliases_ensure,
+    }
+  }
 }
